@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sarikoli (Chinese Tajik) phonemes IPA typer</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="text/javascript">
+
+var conversion = {
+"'": "ʔ",
+"ng":"ŋ",
+"th":"θ",
+"dh":"ð",
+"sh":"ʃ",
+"zh":"ʒ",
+"gh":"ɣ",
+"X":"χ",
+"G":"ʁ",
+"I":"ɪ",
+"E":"ɛ",
+"A":"æ",
+"c":"ə",
+"uu":"ɯ",
+"U":"ʊ",
+"O":"ɔ",
+":":"ː",
+"<":"«",
+">":"»",
+"`": "&#8203;"
+        };
+
+ var maxLength = Object.keys(conversion)
+    .reduce((a, b) => a.length > b.length ? a : b) // get the longest word
+    .length; // and it's length
+  
+  function convert (text) {
+    var converted = "";
+    var cur = 0;
+    while (cur < text.length) {
+      var testedPhoneme;
+      var symbol = undefined;
+      for (var length = maxLength; length > 0; length --) {
+        testedPhoneme = text.substr(cur, length);
+        if (conversion[testedPhoneme]) {
+          symbol = conversion[testedPhoneme];
+          break; // stop the loop
+        }
+      }
+      if (symbol) {
+        converted += symbol;
+        cur += testedPhoneme.length;
+      }
+      else {
+        converted += text[cur]
+        cur++;
+      }
+    }
+    return converted
+  }
+
+  function onInputTextChange(txt) {
+    var outputTextareaElem = document.getElementById("output_textarea");
+    var div = document.createElement("div");
+    var outputHtmlEntities = convert(txt);
+    div.innerHTML = outputHtmlEntities;
+    outputTextareaElem.value = div.innerText;
+  }
+
+
+        function select() {
+          const input = document.getElementById('input_textarea');
+          input.focus();
+          input.select();
+        }   
+        function copytext() {
+          var copyText = document.getElementById("output_textarea");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999)
+          document.execCommand("copy");
+        }
+    </script>
+    
+<style>
+html {font-family:arial}
+table {
+  border-collapse: collapse;
+  width: 90%;
+}
+td, th {
+  border: 1px solid #AAA;
+  text-align: center;
+  padding: 1px;
+}
+textarea {
+	font-size: 13pt;
+	font-family: Arial;
+    width: 96%;
+} 
+.note {
+  border: 1px solid #DDD;
+  width: 45%;
+  text-align: left;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.convtab {
+overflow-y: scroll; 
+height:200px;
+width:170px;
+}
+</style>
+
+
+</head>
+<body>    
+
+<center><h1 class="text-center">Sarikoli (Chinese Tajik) phonemes IPA typer</h1></center>
+
+<center>
+<table>
+<thead>
+<tr>
+<th>	
+<button onclick="select('input_textarea')">Select all</button>
+<button onclick="document.getElementById('input_textarea').value = ''">Clear</button>
+</th>
+<th>
+<button onclick="copytext()">Copy</button>
+
+</th>
+<th style="width:200px;">Conversion table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<textarea
+id="input_textarea"
+autofocus=""
+placeholder="Input"
+rows="10"
+oninput="onInputTextChange(this.value)"></textarea>    
+</td>
+<td>
+<textarea rows="10" placeholder="Output" id="output_textarea"></textarea>    
+</td>
+<td>
+
+<center>
+<div class="convtab">
+<table>
+<thead>
+<tr>
+<th>Inp.</th>
+<th>Outp.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#39;</td>
+<td>ʔ</td>
+</tr>
+<tr>
+<td>ng</td>
+<td>ŋ</td>
+</tr>
+<tr>
+<td>th</td>
+<td>θ</td>
+</tr>
+<tr>
+<td>dh</td>
+<td>ð</td>
+</tr>
+<tr>
+<td>sh</td>
+<td>ʃ</td>
+</tr>
+<tr>
+<td>zh</td>
+<td>ʒ</td>
+</tr>
+<tr>
+<td>gh</td>
+<td>ɣ</td>
+</tr>
+<tr>
+<td>X</td>
+<td>χ</td>
+</tr>
+<tr>
+<td>G</td>
+<td>ʁ</td>
+</tr>
+<tr>
+<td>I</td>
+<td>ɪ</td>
+</tr>
+<tr>
+<td>E</td>
+<td>ɛ</td>
+</tr>
+<tr>
+<td>A</td>
+<td>æ</td>
+</tr>
+<tr>
+<td>c</td>
+<td>ə</td>
+</tr>
+<tr>
+<td>uu</td>
+<td>ɯ</td>
+</tr>
+<tr>
+<td>U</td>
+<td>ʊ</td>
+</tr>
+<tr>
+<td>O</td>
+<td>ɔ</td>
+</tr>
+<tr>
+<td>:</td>
+<td>ː</td>
+</tr>
+<tr>
+<td><</td>
+<td>«</td>
+</tr>
+<tr>
+<td>></td>
+<td>»</td>
+</tr>
+<tr>
+<td>`</td>
+<td>alphabet breaker</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</center>
+
+</td>
+</tr>
+</tbody>
+</table>
+</center>
+
+<br>    
+<center>
+<div class="note">
+<center><h3>Notes</h3></center>
+
+<p><b>Overview</b></p>
+<p>
+Sarikoli(Sarikoy)[ISO 639-3: srh], also known as Chinese Tajik (塔吉克语), is a language spoken by the Tajiks of China. Despite of what its name may suggest, Sarikoli is not mutually intelligible with Tajik of Tajikistan (or Persian.) Sarikoli is an Eastern Iranian language which is spoken in the Taxkorgan Tajik Autonomous County (塔什库尔干塔吉克自治县) of Xinjiang, China.
+</p>
+
+<p><b>Consonants:</b></p>
+<table>
+<thead>
+  <tr>
+    <th></th>
+    <th>Labial</th>
+    <th>Dental</th>
+    <th>Alveolar</th>
+    <th>Postalveolar</th>
+    <th>Palatal</th>
+    <th>Velar</th>
+    <th>Uvular</th>
+    <th>Glottal</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Nasal</td>
+    <td>m</td>
+    <td></td>
+    <td>n</td>
+    <td></td>
+    <td></td>
+    <td>ŋ</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Stop / Polosive</td>
+    <td>p b</td>
+    <td></td>
+    <td>t d</td>
+    <td>t͡ʃ d͡ʒ</td>
+    <td></td>
+    <td>k ɡ</td>
+    <td>q</td>
+    <td>ʔ</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Fricative</td>
+    <td rowspan="2">f v</td>
+    <td rowspan="2">θ ð</td>
+    <td rowspan="2">s z</td>
+    <td rowspan="2">ʃ ʒ</td>
+    <td rowspan="2"></td>
+    <td rowspan="2">x ɣ</td>
+    <td rowspan="2">χ ʁ</td>
+    <td rowspan="2">h</td>
+  </tr>
+  <tr>
+  </tr>
+  <tr>
+    <td>Rhotic</td>
+    <td></td>
+    <td></td>
+    <td>r</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Approximant</td>
+    <td></td>
+    <td></td>
+    <td>l</td>
+    <td></td>
+    <td>j</td>
+    <td>w</td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+</table>
+
+<p><b>Vowels:</b></p>
+<table>
+<thead>
+  <tr>
+    <th rowspan="2"></th>
+    <th>Front</th>
+    <th rowspan="2">Central</th>
+    <th colspan="2">Back</th>
+  </tr>
+  <tr>
+    <td>unrounded</td>
+    <td>unrounded</td>
+    <td>rounded</td>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td rowspan="2">Close</td>
+    <td>i</td>
+    <td></td>
+    <td>ɯ</td>
+    <td>u</td>
+  </tr>
+  <tr>
+    <td>ɪ</td>
+    <td></td>
+    <td></td>
+    <td>ʊ</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Mid</td>
+    <td>e</td>
+    <td rowspan="2">ə</td>
+    <td></td>
+    <td>o</td>
+  </tr>
+  <tr>
+    <td>ɛ</td>
+    <td></td>
+    <td>ɔ</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Open</td>
+    <td>æ</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>ɑ (a)</td>
+    <td></td>
+  </tr>
+</tbody>
+</table>
+
+<p><b>Source:</b> Arlund, Pamela S., and Neikramon Ibrukhim. <i>A Chinese Tajik Reader: An Introduction to Sarikoy (Sarikol) Tajik.</i> All Nations Publishing, 2013.</p>
+
+</div>
+</center>
+
+
+</body>
+</html>
