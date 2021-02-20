@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Suggestion of Sarikoli Tajik Arabic alphabet / Typer</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="text/javascript">
+
+var conversion = {
+"'": "ʔ",
+"ng":"ŋ",
+"th":"θ",
+"dh":"ð",
+"sh":"ʃ",
+"zh":"ʒ",
+"gh":"ɣ",
+"X":"χ",
+"G":"ʁ",
+"I":"ɪ",
+"E":"ɛ",
+"A":"æ",
+"c":"ə",
+"uu":"ɯ",
+"U":"ʊ",
+"O":"ɔ",
+":":"ː",
+"<":"«",
+">":"»",
+"`": "&#8203;"
+        };
+
+
+var conversion2 = {
+"p":"پ",
+"t":"ت",
+"k":"ک",
+"q":"ق",
+"b":"ب",
+"d":"د",
+"g":"گ",
+"ʔ":"ء",
+"m":"م",
+"n":"ن",
+"ŋ":"نگ",
+"r":"ر",
+"f":"ف",
+"v":"ۈ",
+"θ":"ث",
+"ð":"ذ",
+"s":"س",
+"z":"ز",
+"ʃ":"ش",
+"ʒ":"ژ",
+"x":"ح",
+"ɣ":"ع",
+"χ":"خ",
+"ʁ":"غ",
+"h":"ه",
+"w":"ۋ",
+"j":"ي",
+"l":"ل",
+"ts":"تس",
+"tʃ":"چ",
+"dz":"دز",
+"dʒ":"ج",
+
+"i":"ى",
+"ɪ":"",
+"e":"ە",
+"ɛ":"ە",
+"æ":"ا",
+"a":"ا",
+"ə":"",
+"ɯ":"ې",
+"u":"ۇ",
+"ʊ":"",
+"o":"و",
+"ɔ":"و",
+
+"ɛj":"ەي",
+"ɛi":"ەي",
+"ej":"ەي",
+"ei":"ەي",
+"ai":"اي",
+"aj":"اي",
+"ɔw":"وۋ",
+"ɔu":"وۋ",
+"ow":"وۋ",
+"ou":"وۋ",
+
+",": "،",
+";": "؛",
+"?": "؟",
+"<": "«",
+">": "»",
+
+};
+
+ var maxLength = Object.keys(conversion)
+    .reduce((a, b) => a.length > b.length ? a : b) // get the longest word
+    .length; // and it's length
+  
+  function convert (text) {
+    var converted = "";
+    var cur = 0;
+    while (cur < text.length) {
+      var testedPhoneme;
+      var symbol = undefined;
+      for (var length = maxLength; length > 0; length --) {
+        testedPhoneme = text.substr(cur, length);
+        if (conversion[testedPhoneme]) {
+          symbol = conversion[testedPhoneme];
+          break; // stop the loop
+        }
+      }
+      if (symbol) {
+        converted += symbol;
+        cur += testedPhoneme.length;
+      }
+      else {
+        converted += text[cur]
+        cur++;
+      }
+    }
+    return converted
+  }
+
+ var maxLength2 = Object.keys(conversion2)
+    .reduce((a, b) => a.length > b.length ? a : b) // get the longest word
+    .length; // and it's length
+  
+  function convert2 (text) {
+    var converted2 = "";
+    var cur2 = 0;
+    while (cur2 < text.length) {
+      var testedPhoneme2;
+      var symbol2 = undefined;
+      for (var length = maxLength2; length > 0; length --) {
+        testedPhoneme2 = text.substr(cur2, length);
+        if (conversion2[testedPhoneme2]) {
+          symbol2 = conversion2[testedPhoneme2];
+          break; // stop the loop
+        }
+      }
+      if (symbol2) {
+        converted2 += symbol2;
+        cur2 += testedPhoneme2.length;
+      }
+      else {
+        converted2 += text[cur2]
+        cur2++;
+      }
+    }
+    return converted2
+  }
+
+
+  function onInputTextChange() {
+    var txt = document.getElementById("input_textarea").value // added this
+    var outputTextareaElem = document.getElementById("output_textarea");
+    var div = document.createElement("div");
+    var outputHtmlEntities = convert(txt);
+    div.innerHTML = outputHtmlEntities;
+    outputTextareaElem.value = div.innerText;
+  }
+
+  function onOutputTextChange() {
+    var txt = document.getElementById("output_textarea").value // added this
+    var outputTextareaElem2 = document.getElementById("output_textarea2");
+    var div = document.createElement("div");
+    var outputHtmlEntities2 = convert2(txt);
+    div.innerHTML = outputHtmlEntities2;
+    outputTextareaElem2.value = div.innerText;
+  }
+
+
+        function select() {
+          const input = document.getElementById('input_textarea');
+          input.focus();
+          input.select();
+        }   
+        function copytext() {
+          var copyText = document.getElementById("output_textarea");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999)
+          document.execCommand("copy");
+        }
+        function copytext2() {
+          var copyText2 = document.getElementById("output_textarea2");
+          copyText2.select();
+          copyText2.setSelectionRange(0, 99999)
+          document.execCommand("copy");
+        }
+    </script>
+    
+<style>
+@import url(https://victorlee.github.io/uyghur-arabic-script-fonts/stylesheet.css);
+html {font-family:arial}
+table {
+  border-collapse: collapse;
+  width: 90%;
+}
+td, th {
+  border: 1px solid #AAA;
+  text-align: center;
+  padding: 1px;
+}
+textarea {
+	font-size: 13pt;
+	font-family: Arial;
+    width: 96%;
+} 
+.note {
+  border: 1px solid #DDD;
+  width: 45%;
+  text-align: left;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.convtab {
+overflow-y: scroll; 
+height:200px;
+width:170px;
+}
+</style>
+
+
+</head>
+<body align=center valign=middle>    
+
+<h1 class="text-center">Suggestion of Sarikoli Tajik Arabic alphabet / Typer</h1>
+
+<center>
+<table>
+<thead>
+<tr>
+<th>	
+<button onclick="select('input_textarea')">Select all</button>
+<button onclick="document.getElementById('input_textarea').value = ''">Clear</button>
+</th>
+<th>
+<button onclick="copytext()">Copy</button>
+
+</th>
+<th style="width:200px;">Conversion table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<textarea
+id="input_textarea"
+autofocus=""
+placeholder="Input"
+rows="10" oninput="onInputTextChange(); onOutputTextChange()"></textarea>    
+</td>
+<td>
+<textarea rows="10" placeholder="Output" id="output_textarea" oninput="onOutputTextChange()"></textarea>    
+</td>
+<td>
+
+<center>
+<div class="convtab">
+<table>
+<thead>
+<tr>
+<th>Inp.</th>
+<th>Outp.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#39;</td>
+<td>ʔ</td>
+</tr>
+<tr>
+<td>ng</td>
+<td>ŋ</td>
+</tr>
+<tr>
+<td>th</td>
+<td>θ</td>
+</tr>
+<tr>
+<td>dh</td>
+<td>ð</td>
+</tr>
+<tr>
+<td>sh</td>
+<td>ʃ</td>
+</tr>
+<tr>
+<td>zh</td>
+<td>ʒ</td>
+</tr>
+<tr>
+<td>gh</td>
+<td>ɣ</td>
+</tr>
+<tr>
+<td>X</td>
+<td>χ</td>
+</tr>
+<tr>
+<td>G</td>
+<td>ʁ</td>
+</tr>
+<tr>
+<td>I</td>
+<td>ɪ</td>
+</tr>
+<tr>
+<td>E</td>
+<td>ɛ</td>
+</tr>
+<tr>
+<td>A</td>
+<td>æ</td>
+</tr>
+<tr>
+<td>c</td>
+<td>ə</td>
+</tr>
+<tr>
+<td>uu</td>
+<td>ɯ</td>
+</tr>
+<tr>
+<td>U</td>
+<td>ʊ</td>
+</tr>
+<tr>
+<td>O</td>
+<td>ɔ</td>
+</tr>
+<tr>
+<td>:</td>
+<td>ː</td>
+</tr>
+<tr>
+<td><</td>
+<td>«</td>
+</tr>
+<tr>
+<td>></td>
+<td>»</td>
+</tr>
+<tr>
+<td>`</td>
+<td>\u200B</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</center>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<br>
+<button onclick="copytext2()">Copy</button><br>
+<textarea id="output_textarea2" placeholder="Tajik" style="width:60%;font-family:UKIJ Ekran;font-size:1.8rem" rows="6" dir="rtl"></textarea>
+
+
+
+<br><br>
+
+<div class="note">
+<center><h2>Notes</h2></center>
+<b>Phoneme->Arabic script conversion chart:</b><br><br>
+<table style="font-family:UKIJ Ekran;font-size:1.5rem; line-height:1.1">
+<thead>
+<tr>
+<th>IPA</th>
+<th>Arabic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p</td>
+<td>پ</td>
+</tr>
+<tr>
+<td>t</td>
+<td>ت</td>
+</tr>
+<tr>
+<td>k</td>
+<td>ک</td>
+</tr>
+<tr>
+<td>q</td>
+<td>ق</td>
+</tr>
+<tr>
+<td>b</td>
+<td>ب</td>
+</tr>
+<tr>
+<td>d</td>
+<td>د</td>
+</tr>
+<tr>
+<td>g</td>
+<td>گ</td>
+</tr>
+<tr>
+<td>ʔ</td>
+<td>ء</td>
+</tr>
+<tr>
+<td>m</td>
+<td>م</td>
+</tr>
+<tr>
+<td>n</td>
+<td>ن</td>
+</tr>
+<tr>
+<td>ŋ</td>
+<td>نگ</td>
+</tr>
+<tr>
+<td>r</td>
+<td>ر</td>
+</tr>
+<tr>
+<td>f</td>
+<td>ف</td>
+</tr>
+<tr>
+<td>v</td>
+<td>ۈ</td>
+</tr>
+<tr>
+<td>θ</td>
+<td>ث</td>
+</tr>
+<tr>
+<td>ð</td>
+<td>ذ</td>
+</tr>
+<tr>
+<td>s</td>
+<td>س</td>
+</tr>
+<tr>
+<td>z</td>
+<td>ز</td>
+</tr>
+<tr>
+<td>ʃ</td>
+<td>ش</td>
+</tr>
+<tr>
+<td>ʒ</td>
+<td>ژ</td>
+</tr>
+<tr>
+<td>x</td>
+<td>ح</td>
+</tr>
+<tr>
+<td>ɣ</td>
+<td>ع</td>
+</tr>
+<tr>
+<td>χ</td>
+<td>خ</td>
+</tr>
+<tr>
+<td>ʁ</td>
+<td>غ</td>
+</tr>
+<tr>
+<td>h</td>
+<td>ه</td>
+</tr>
+<tr>
+<td>w</td>
+<td>ۋ</td>
+</tr>
+<tr>
+<td>j</td>
+<td>ي</td>
+</tr>
+<tr>
+<td>l</td>
+<td>ل</td>
+</tr>
+<tr>
+<td>ts</td>
+<td>تس</td>
+</tr>
+<tr>
+<td>tʃ</td>
+<td>چ</td>
+</tr>
+<tr>
+<td>dz</td>
+<td>دز</td>
+</tr>
+<tr>
+<td>dʒ</td>
+<td>ج</td>
+</tr>
+<tr>
+<td>i</td>
+<td>ى</td>
+</tr>
+<tr>
+<td>ɪ</td>
+<td></td>
+</tr>
+<tr>
+<td>e, ɛ</td>
+<td>ە</td>
+</tr>
+<tr>
+<td>æ, a</td>
+<td>ا</td>
+</tr>
+<tr>
+<td>ə</td>
+<td></td>
+</tr>
+<tr>
+<td>ɯ</td>
+<td>ې</td>
+</tr>
+<tr>
+<td>u</td>
+<td>ۇ</td>
+</tr>
+<tr>
+<td>ʊ</td>
+<td></td>
+</tr>
+<tr>
+<td>o, ɔ</td>
+<td>و</td>
+</tr>
+<tr>
+<td>ɛj, ɛi, ej, ei</td>
+<td>ەي</td>
+</tr>
+<tr>
+<td>aj, ai</td>
+<td>اي</td>
+</tr>
+<tr>
+<td>ɔw, ɔu, ow, ou</td>
+<td>وۋ</td>
+</tr>
+</tbody>
+</table>
+
+<p><b>Source:</b> Arlund, Pamela S., and Neikramon Ibrukhim. <i>A Chinese Tajik Reader: An Introduction to Sarikoy (Sarikol) Tajik.</i> All Nations Publishing, 2013.</p>
+
+</div>
+</center>
+
+
+</body>
+</html>
