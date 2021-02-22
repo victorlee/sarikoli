@@ -4,6 +4,6 @@ A repository dedicated to the [Sarikoli(Sarikoy) Tajik](https://glottolog.org/re
 
 [IPA typer](ipa-typer.html)
 
-[Arabic script suggestion](arabic-typer.html)
+[Arabic script suggestion](arabic-alphabet-suggestion-typer.html)
 
 [Demo Arabic typer](demo-arabic-typer.html)
