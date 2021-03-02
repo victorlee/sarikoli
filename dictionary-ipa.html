@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +8,37 @@
 
     <script type="text/javascript">
 
+
 var conversion = {
-"i":"i",
-"e":"ɛ",
-"a":"a",
-"u":"u",
 "ü":"ɯ",
 "ue":"ɯ",
-"o":"o",
+"o":"ɔ",
+"üi":"ɯi",
+"uei":"ɯi",
+"oi":"ɔi",
+"üu":"ɯu",
+"ueu":"ɯu",
+"ou":"ʌu",
+"zz":"ð",
+"ss":"θ",
+"j":"dʒ",
+"q":"tʃ",
+"zy":"ʒ",
+"x":"ʃ",
+"y":"j",
+"gc":"ɣ",
+"c":"x",
+"kh":"q",
+"gh":"ʁ",
+"h":"χ",
+"hy":"h",
+        };
+
+
+var conversion2 = {
+"e":"ɛ",
+"ü":"ɯ",
+"ue":"ɯ",
 "ei":"ej",
 "ui":"uj",
 "üi":"ɯj",
@@ -25,35 +49,21 @@ var conversion = {
 "üu":"ɯw",
 "ueu":"ɯw",
 "ou":"əw",
-"b":"b",
-"p":"p",
-"n":"n",
-"w":"w",
-"v":"v",
-"f":"f",
 "zz":"ð",
 "ss":"θ",
-"d":"d",
-"t":"t",
-"n":"n",
-"l":"l",
-"r":"r",
-"z":"z",
-"s":"s",
 "j":"dʑ",
 "q":"tɕ",
 "zy":"ʑ",
 "x":"ɕ",
 "y":"j",
-"g":"g",
-"k":"k",
 "gc":"ɣ",
 "c":"x",
 "kh":"q",
 "gh":"ʁ",
 "h":"χ",
 "hy":"h",
-        };
+};
+
 
  var maxLength = Object.keys(conversion)
     .reduce((a, b) => a.length > b.length ? a : b) // get the longest word
@@ -84,14 +94,49 @@ var conversion = {
     return converted
   }
 
+ var maxLength2 = Object.keys(conversion2)
+    .reduce((a, b) => a.length > b.length ? a : b) // get the longest word
+    .length; // and it's length
+  
+  function convert2 (text) {
+    var converted2 = "";
+    var cur2 = 0;
+    while (cur2 < text.length) {
+      var testedPhoneme2;
+      var symbol2 = undefined;
+      for (var length = maxLength2; length > 0; length --) {
+        testedPhoneme2 = text.substr(cur2, length);
+        if (conversion2[testedPhoneme2]) {
+          symbol2 = conversion2[testedPhoneme2];
+          break; // stop the loop
+        }
+      }
+      if (symbol2) {
+        converted2 += symbol2;
+        cur2 += testedPhoneme2.length;
+      }
+      else {
+        converted2 += text[cur2]
+        cur2++;
+      }
+    }
+    return converted2
+  }
+
   function onInputTextChange(txt) {
     var outputTextareaElem = document.getElementById("output_textarea");
     var div = document.createElement("div");
     var outputHtmlEntities = convert(txt);
     div.innerHTML = outputHtmlEntities;
     outputTextareaElem.value = div.innerText;
-  }
 
+    var outputTextareaElem2 = document.getElementById("output_textarea2");
+    var div = document.createElement("div");
+    var outputHtmlEntities2 = convert2(txt);
+    div.innerHTML = outputHtmlEntities2;
+    outputTextareaElem2.value = div.innerText;
+  }
+  
 
         function select() {
           const input = document.getElementById('input_textarea');
@@ -104,6 +149,13 @@ var conversion = {
           copyText.setSelectionRange(0, 99999)
           document.execCommand("copy");
         }
+	function copytext2() {
+          var copyText = document.getElementById("output_textarea2");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999)
+          document.execCommand("copy");
+        }
+
     </script>
     
 <style>
@@ -154,7 +206,9 @@ width:170px;
 </th>
 <th>
 <button onclick="copytext()">Copy</button>
-
+</th>
+<th>
+<button onclick="copytext2()">Copy</button>
 </th>
 </tr>
 </thead>
@@ -171,7 +225,9 @@ oninput="onInputTextChange(this.value)"></textarea>
 <td>
 <textarea rows="10" placeholder="Output" id="output_textarea"></textarea>    
 </td>
-
+<td>
+<textarea rows="10" placeholder="Output" id="output_textarea2"></textarea>    
+</td>
 </tr>
 </tbody>
 </table>
@@ -183,20 +239,20 @@ oninput="onInputTextChange(this.value)"></textarea>
 <center><h3>Notes</h3></center>
 
 <div>
-	<p>phonology based on: Kim, Deborah. <em><a href="https://www.lotpublications.nl/Documents/467_fulltext.pdf">Topics in the syntax of Sarikoli</a></em></p>
+	<p><b>entry = Gao, Kim</b></p>
 	<p>i = [i]</p>
-	<p>e = [ɛ]</p>
+	<p>e = [e], [ɛ]</p>
 	<p>a = [a]</p>
 	<p>u = [u]</p>
-	<p>ü / ue = [ɯ]</p>
-	<p>o = [o]</p>
-	<p>ei = [ej]</p>
-	<p>ui = [uj]</p>
-	<p>üi / uei = [ɯj]</p>
-	<p>oi = [oj]</p>
-	<p>eu = [ɛw]</p>
-	<p>iu = [iw]</p>
-	<p>ou = [əw]</p>
+	<p>ü / ue = [ɯ], [ɯ]</p>
+	<p>o = [ɔ], [o]</p>
+	<p>ei = [ei], [ej]</p>
+	<p>ui = [ui], [uj]</p>
+	<p>üi / uei = [ɯi], [ɯj]</p>
+	<p>oi = [ɔi], [oj]</p>
+	<p>eu = [eu], [ɛw]</p>
+	<p>iu = [iu], [iw]</p>
+	<p>ou = [ʌu], [əw]</p>
 	<p>b = [b]</p>
 	<p>p = [p]</p>
 	<p>n = [n]</p>
@@ -214,10 +270,10 @@ oninput="onInputTextChange(this.value)"></textarea>
 	<p>ts = [ts]</p>
 	<p>z = [z]</p>
 	<p>s = [s]</p>
-	<p>j = [dʑ]</p>
-	<p>q = [tɕ]</p>
-	<p>zy = [ʑ]</p>
-	<p>x = [ɕ]</p>
+	<p>j = [dʒ], [dʑ]</p>
+	<p>q = [tʃ], [tɕ]</p>
+	<p>zy = [ʒ], [ʑ]</p>
+	<p>x = [ʃ], [ɕ]</p>
 	<p>y = [j]</p>
 	<p>g = [g]</p>
 	<p>k = [k]</p>
