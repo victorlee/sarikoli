@@ -32,7 +32,7 @@ var conversion = {
 "<":"«",
 ">":"»",
 "`": "&#8203;",
-"dz":"ʥ",
+"dz":"ʣ",
 "dZ":"ʥ",
 "dZZ":"ʤ",
 "ts":"ʦ",
@@ -201,6 +201,37 @@ oninput="onInputTextChange(this.value)"></textarea>
 <td>ZZ</td>
 <td>ʒ</td>
 </tr>
+	
+	
+<tr>
+<td>dz</td>
+<td>ʥ</td>
+</tr>
+<tr>
+<td>dZ</td>
+<td>ʥ</td>
+</tr>
+<tr>
+<td>dZZ</td>
+<td>ʤ</td>
+</tr>	
+<tr>
+<td>ts</td>
+<td>ʦ</td>
+</tr>
+<tr>
+<td>tS</td>
+<td>ʨ</td>
+</tr>
+<tr>
+<td>tSS</td>
+<td>ʧ</td>
+</tr>
+
+	
+	
+	
+	
 <tr>
 <td>G</td>
 <td>ɣ</td>
@@ -281,14 +312,15 @@ Sarikoli(Sarikoy)[ISO 639-3: srh], also known as Chinese Tajik (塔吉克语), i
 
 <p><b>Consonants:</b></p>
 <table>
+<table>
 <thead>
   <tr>
     <th>a</th>
     <th>Labial</th>
     <th>Dental</th>
     <th>Alveolar</th>
-    <th>Postalveolar</th>
     <th>Alveolo-palatal</th>
+    <th>Postalveolar</th>
     <th>Velar</th>
     <th>Uvular</th>
     <th>Glottal</th>
@@ -296,40 +328,49 @@ Sarikoli(Sarikoy)[ISO 639-3: srh], also known as Chinese Tajik (塔吉克语), i
 </thead>
 <tbody>
   <tr>
+    <td>Stop / Polosive</td>
+    <td>p b</td>
+    <td></td>
+    <td>t d</td>
+    <td></td>
+    <td></td>
+    <td>k ɡ</td>
+    <td>q</td>
+    <td>(ʔ)</td>
+  </tr>
+  <tr>
+    <td>Affricate</td>
+    <td></td>
+    <td></td>
+    <td>ʦ ʣ</td>
+    <td colspan="2">tɕ dʑ / tʃ dʒ</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Fricative</td>
+    <td>f v</td>
+    <td>θ ð</td>
+    <td>s z</td>
+    <td colspan="2">ɕ ʑ / ʃ ʒ</td>
+    <td>x ɣ</td>
+    <td>χ ʁ</td>
+    <td>h</td>
+  </tr>
+  <tr>
     <td>Nasal</td>
     <td>m</td>
     <td></td>
     <td>n</td>
     <td></td>
     <td></td>
-    <td>ŋ</td>
     <td></td>
     <td></td>
-  </tr>
-  <tr>
-    <td>Stop / Polosive</td>
-    <td>p b</td>
     <td></td>
-    <td>t d</td>
-    <td colspan="2">tʃ dʒ / tɕ dʑ</td>
-    <td>k ɡ</td>
-    <td>q</td>
-    <td>(ʔ)</td>
   </tr>
   <tr>
-    <td rowspan="2">Fricative</td>
-    <td rowspan="2">f v</td>
-    <td rowspan="2">θ ð</td>
-    <td rowspan="2">s z</td>
-    <td colspan="2" rowspan="2">ʃ ʒ / ɕ ʑ</td>
-    <td rowspan="2">x ɣ</td>
-    <td rowspan="2">χ ʁ</td>
-    <td rowspan="2">h</td>
-  </tr>
-  <tr>
-  </tr>
-  <tr>
-    <td>Rhotic</td>
+    <td>Trill</td>
     <td></td>
     <td></td>
     <td>r</td>
@@ -340,75 +381,29 @@ Sarikoli(Sarikoy)[ISO 639-3: srh], also known as Chinese Tajik (塔吉克语), i
     <td></td>
   </tr>
   <tr>
-    <td>Approximant</td>
+    <td>Lateral</td>
     <td></td>
     <td></td>
     <td>l</td>
     <td></td>
-    <td>j</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Glide</td>
     <td>w</td>
     <td></td>
     <td></td>
-  </tr>
-</tbody>
-</table>
-<br>
-<p><b>Vowels:</b></p>
-<table>
-<thead>
-  <tr>
-    <th rowspan="2"></th>
-    <th>Front</th>
-    <th rowspan="2">Central</th>
-    <th colspan="2">Back</th>
-  </tr>
-  <tr>
-    <td>unrounded</td>
-    <td>unrounded</td>
-    <td>rounded</td>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td rowspan="2">Close</td>
-    <td>i</td>
-    <td></td>
-    <td>ɯ</td>
-    <td>u</td>
-  </tr>
-  <tr>
-    <td>(ɪ)</td>
-    <td></td>
-    <td></td>
-    <td>(ʊ)</td>
-  </tr>
-  <tr>
-    <td rowspan="2">Mid</td>
-    <td>e</td>
-    <td rowspan="2">ə</td>
-    <td></td>
-    <td>o</td>
-  </tr>
-  <tr>
-    <td>ɛ</td>
-    <td></td>
-    <td>ɔ</td>
-  </tr>
-  <tr>
-    <td rowspan="2">Open</td>
-    <td>(æ)</td>
+    <td>j</td>
     <td></td>
     <td></td>
     <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td colspan="2">a / ɑ</td>
     <td></td>
   </tr>
 </tbody>
 </table>
-Phonemes in parentheses rarely occur.
 
 <p><b>Sources:</b><br>Arlund, Pamela S., and Neikramon Ibrukhim. <i>A Chinese Tajik Reader: An Introduction to Sarikoy (Sarikol) Tajik.</i> All Nations Publishing, 2013.<br>Kim, Deborah. <i>Subordination In Sarikoli.</i> University of North Dakota, 2014.<br>Kim, Deborah. <i>Topics in the syntax of Sarikoli.</i> Leiden University, 2017.</p>
 
