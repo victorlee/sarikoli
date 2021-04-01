@@ -9,3 +9,5 @@ A repository dedicated to the [Sarikoli(Sarikoy) Tajik](https://glottolog.org/re
 [Demo Arabic typer](demo-arabic-typer.html)
 
 [IPA transcriber for 塔吉克汉词典](dictionary-ipa.html)
+
+[lessons](lessons/)
