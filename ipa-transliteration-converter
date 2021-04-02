@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IPA ↔ Transliteration converter</title>
+<meta charset="utf-8">
+
+    <script type="text/javascript">
+	  var conversion = {
+"ɡ":"g",
+"θ":"th",
+"ð":"dh",
+"ʦ":"ts",
+"ʣ":"dz",
+"ɕ":"sh",
+"ʑ":"zh",
+"ʨ":"ch",
+"ʥ":"j",
+"x":"hh",
+"ɣ":"gg",
+"χ":"kh",
+"ʁ":"ɡh",
+"j":"y",
+"ʔ":"'",
+"ɑ":"a",
+"ɛ":"e",
+"ə":"o",
+"ɯ":"uu",
+"ɑj":"ay",
+"ej":"ei",
+"oj":"oi",
+"uj":"ui",
+"ɯj":"uui",
+"iw":"iu",
+"əw":"ou",
+        };
+
+
+
+
+var conversion2 = {
+"g":"ɡ",
+"th":"θ",
+"dh":"ð",
+"ts":"ʦ",
+"dz":"ʣ",
+"sh":"ɕ",
+"zh":"ʑh",
+"ch":"ʨ",
+"j":"ʥ",
+"hh":"x",
+"gg":"ɣ",
+"kh":"χ",
+"gh":"ʁ",
+"y":"j",
+"'":"ʔ",
+"a":"ɑ",
+"e":"ɛ",
+"o'o":"əʔə",
+"uu":"ɯ",
+"ay":"ɑj",
+"ei":"ej",
+"oi":"oj",
+"ui":"uj",
+"uui":"ɯj",
+"iu":"iw",
+"ou":"əw",
+
+"G":"ɡ",
+"Th":"θ",
+"Dh":"ð",
+"Ts":"ʦ",
+"Dz":"ʣ",
+"Sh":"ɕ",
+"Zh":"ʑh",
+"Ch":"ʨ",
+"J":"ʥ",
+"Hh":"x",
+"Gg":"ɣ",
+"Kh":"χ",
+"Gh":"ʁ",
+"Y":"j",
+"'":"ʔ",
+"A":"ɑ",
+"E":"ɛ",
+"O'o":"əʔə",
+"Uu":"ɯ",
+"Ay":"ɑj",
+"Ei":"ej",
+"Oi":"oj",
+"Ui":"uj",
+"Uui":"ɯj",
+"Iu":"iw",
+"Ou":"əw",
+};
+
+
+
+
+ var maxLength = Object.keys(conversion)
+    .reduce((a, b) => a.length > b.length ? a : b) // get the longest word
+    .length; // and it's length
+  
+  function convert (text) {
+    var converted = "";
+    var cur = 0;
+    while (cur < text.length) {
+      var testedPhoneme;
+      var symbol = undefined;
+      for (var length = maxLength; length > 0; length --) {
+        testedPhoneme = text.substr(cur, length);
+        if (conversion[testedPhoneme]) {
+          symbol = conversion[testedPhoneme];
+          break; // stop the loop
+        }
+      }
+      if (symbol) {
+        converted += symbol;
+        cur += testedPhoneme.length;
+      }
+      else {
+        converted += text[cur]
+        cur++;
+      }
+    }
+    return converted
+  }
+
+
+
+
+ var maxLength2 = Object.keys(conversion2)
+    .reduce((a, b) => a.length > b.length ? a : b) // get the longest word
+    .length; // and it's length
+  
+  function convert2 (text) {
+    var converted2 = "";
+    var cur2 = 0;
+    while (cur2 < text.length) {
+      var testedPhoneme2;
+      var symbol2 = undefined;
+      for (var length = maxLength2; length > 0; length --) {
+        testedPhoneme2 = text.substr(cur2, length);
+        if (conversion2[testedPhoneme2]) {
+          symbol2 = conversion2[testedPhoneme2];
+          break; // stop the loop
+        }
+      }
+      if (symbol2) {
+        converted2 += symbol2;
+        cur2 += testedPhoneme2.length;
+      }
+      else {
+        converted2 += text[cur2]
+        cur2++;
+      }
+    }
+    return converted2
+  }
+
+
+
+
+
+
+  function onInputTextChange(txt) {
+    var outputTextareaElem = document.getElementById("output_textarea");
+    var div = document.createElement("div");
+    var outputHtmlEntities = convert(txt);
+    div.innerHTML = outputHtmlEntities;
+    outputTextareaElem.value = div.innerText;
+  }
+  function onInputTextChange2(txt) {
+    var outputTextareaElem2 = document.getElementById("output_textarea2");
+    var div = document.createElement("div");
+    var outputHtmlEntities2 = convert2(txt);
+    div.innerHTML = outputHtmlEntities2;
+    outputTextareaElem2.value = div.innerText;
+  }
+
+  
+
+
+    </script>
+    
+<style>
+html {
+font-family:arial
+}
+table {
+  border-collapse: collapse;
+  width: 90%;
+}
+td, th {
+  border: 1px solid #AAA;
+  text-align: center;
+  padding: 1px;
+}
+textarea {
+	font-size: 16pt;
+	font-family: Arial;
+    width: 96%;
+} 
+.note {
+  border: 1px solid #DDD;
+  width: 30%;
+  text-align: left;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+</style>
+
+
+</head>
+<body>  
+
+<body>  
+
+<center><h1 class="text-center">IPA ↔ Transliteration converter</h1></center><br>
+ 
+<center>
+<table>
+
+<tbody>
+<tr>
+<td>
+<textarea
+id="output_textarea2"
+autofocus=""
+placeholder="IPA"
+rows="10"
+oninput="onInputTextChange(this.value)"></textarea>    
+</td>
+<td>
+<textarea rows="10" placeholder="Trans." id="output_textarea"
+oninput="onInputTextChange2(this.value)"></textarea>    
+</td>
+
+</tr>
+</tbody>
+</table>
+
+
+</center>
+
+</body>
+</html>
