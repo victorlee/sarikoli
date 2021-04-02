@@ -12,5 +12,3 @@ A repository dedicated to the [Sarikoli(Sarikoy) Tajik](https://glottolog.org/re
 
 [IPA ↔ Transliteration converter](ipa-transliteration-converter.html)
 
-[lessons](lessons/)
-
